@@ -11,8 +11,9 @@ add_subdirectory(legacy)
 
 add_subdirectory(extension)
 
+add_subdirectory(image_processing)
+
 # TODO: Split headers tests into core and extensions, see Jamfile-s
 # if(GIL_BUILD_HEADERS_TESTS)
 #   add_subdirectory(headers)
 # endif()
-
