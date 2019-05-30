@@ -2,12 +2,14 @@
 
 namespace boost{
 namespace gil{
-double normalized_sinc(double x) {
+double normalized_sinc(double x) 
+{
     constexpr double pi = 3.14;
     return std::sin(x * pi) / (x * pi);
 }
 
-double lanczos(long int x, long int a) {
+double lanczos(long int x, long int a) 
+{
     if (x == 0) {
         return 1;
     }

@@ -9,7 +9,8 @@
 
 #include <iostream>
 
-int main(int argc, char* argv[]) {
+int main(int argc, char* argv[]) 
+{
     namespace gil = boost::gil;
     if (argc != 3) {
         std::cerr << "usage: " << argv[0] << " <input-filename.png> <output-filename.png>\n";

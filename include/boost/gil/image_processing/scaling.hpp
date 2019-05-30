@@ -8,7 +8,8 @@ namespace gil{
 template <typename ImageView>
 void lanczos_at(long int source_x, long int source_y, 
                 long int target_x, long int target_y, 
-                ImageView input_view, ImageView output_view, long int a) {
+                ImageView input_view, ImageView output_view, long int a) 
+{
     using pixel_t = typename std::remove_reference<
                       decltype(std::declval<ImageView>()(0, 0))
                     >::type;
@@ -20,7 +21,9 @@ void lanczos_at(long int source_x, long int source_y,
                             )
                         )
                        >::type;
-    pixel_t result_pixel{};
+    pixel_t result_pixel;
+    boost::gil::static_transform(result_pixel, result_pixel, 
+                                 [](channel_t x) {return 0;});
     
     for (long int y_i = std::max(source_y - a + 1, 0l); 
          y_i <= std::min(source_y + a, input_view.height() - 1); 
@@ -45,7 +48,8 @@ void lanczos_at(long int source_x, long int source_y,
 }
 
 template <typename ImageView>
-void scale_lanczos(ImageView input_view, ImageView output_view, long int a) {
+void scale_lanczos(ImageView input_view, ImageView output_view, long int a) 
+{
     double scale_x = (static_cast<double>(output_view.width())) 
                      / static_cast<double>(input_view.width());
     double scale_y = (static_cast<double>(output_view.height())) 
