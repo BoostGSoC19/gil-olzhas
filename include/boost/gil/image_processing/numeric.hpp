@@ -1,7 +1,6 @@
 #include <cmath>
 
-namespace boost{
-namespace gil{
+namespace boost{ namespace gil{
 
 /// \defgroup ImageProcessingMath
 /// \brief Math operations for IP algorithms
@@ -40,5 +39,4 @@ double lanczos(long int x, long int a)
 
     return 0;
 }
-}
-}
+}}

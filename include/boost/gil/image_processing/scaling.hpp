@@ -3,8 +3,7 @@
 #include <boost/gil/pixel.hpp>
 #include <boost/gil/image_processing/numeric.hpp>
 
-namespace boost{
-namespace gil{
+namespace boost{ namespace gil{
 /// \defgroup ScalingAlgorithms
 /// \brief Algorthims suitable for rescaling
 ///
@@ -46,7 +45,9 @@ void lanczos_at(long int source_x, long int source_y,
                        >::type;
     pixel_t result_pixel;
     boost::gil::static_transform(result_pixel, result_pixel, 
-                                 [](channel_t x) {return 0;});
+                                 [](channel_t) {
+                                     return static_cast<channel_t>(0);
+                                    });
     
     for (long int y_i = std::max(source_y - a + 1, 0l); 
          y_i <= std::min(source_y + a, input_view.height() - 1); 
@@ -99,5 +100,4 @@ void scale_lanczos(ImageView input_view, ImageView output_view, long int a)
         }
     }
 }
-}
-}
+}}
