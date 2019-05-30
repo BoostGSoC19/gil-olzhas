@@ -28,9 +28,10 @@ namespace boost{ namespace gil{
 /// is a good idea, since it might have ringing
 /// artifacts.
 template <typename ImageView>
-void lanczos_at(long int source_x, long int source_y, 
-                long int target_x, long int target_y, 
-                ImageView input_view, ImageView output_view, long int a) 
+void lanczos_at(
+    long int source_x, long int source_y, 
+    long int target_x, long int target_y, 
+    ImageView input_view, ImageView output_view, long int a) 
 {
     using pixel_t = typename std::remove_reference<
                       decltype(std::declval<ImageView>()(0, 0))
@@ -83,7 +84,10 @@ void lanczos_at(long int source_x, long int source_y,
 /// https://en.wikipedia.org/wiki/Lanczos_resampling
 /// with standardinzed cardinal sin (sinc)
 template <typename ImageView>
-void scale_lanczos(ImageView input_view, ImageView output_view, long int a) 
+void scale_lanczos(
+    ImageView input_view, 
+    ImageView output_view, 
+    long int a) 
 {
     double scale_x = (static_cast<double>(output_view.width())) 
                      / static_cast<double>(input_view.width());
