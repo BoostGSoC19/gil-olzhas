@@ -5,6 +5,29 @@
 
 namespace boost{
 namespace gil{
+/// \defgroup ScalingAlgorithms
+/// \brief Algorthims suitable for rescaling
+///
+/// These algorithms are used to improve image
+/// quality after image resizing is made.
+
+/// \defgroup DownScalingAlgorithms
+/// \ingroup ScalingAlgorithms
+/// \brief Algorthims suitable for downscaling
+///
+/// These algorithms provide best results when used
+/// for downscaling. Using for upscaling will probably
+/// provide less than good results.
+
+
+/// \brief a single step of lanczos downscaling
+/// \ingroup DownScalingAlgorithms
+///
+/// Use this algorithm to scale down source image
+/// into a smaller image with reasonable quality.
+/// Do note that having a look at the output once
+/// is a good idea, since it might have ringing
+/// artifacts.
 template <typename ImageView>
 void lanczos_at(long int source_x, long int source_y, 
                 long int target_x, long int target_y, 
@@ -47,6 +70,17 @@ void lanczos_at(long int source_x, long int source_y,
     output_view(target_x, target_y) = result_pixel;
 }
 
+/// \brief Complete Lanczos algorithm
+/// \ingroup DownScalingAlgorithms
+///
+/// This algorithm does full pass over
+/// resulting image and convolves pixels from
+/// original image. Do note that it might be a good
+/// idea to have a look at test output as there
+/// might be ringing artifacts.
+/// Based on wikipedia article:
+/// https://en.wikipedia.org/wiki/Lanczos_resampling
+/// with standardinzed cardinal sin (sinc)
 template <typename ImageView>
 void scale_lanczos(ImageView input_view, ImageView output_view, long int a) 
 {
