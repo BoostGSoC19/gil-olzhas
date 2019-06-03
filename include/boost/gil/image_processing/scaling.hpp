@@ -29,9 +29,13 @@ namespace boost{ namespace gil{
 /// artifacts.
 template <typename ImageView>
 void lanczos_at(
-    long int source_x, long int source_y, 
-    long int target_x, long int target_y, 
-    ImageView input_view, ImageView output_view, long int a) 
+    long int source_x, 
+    long int source_y, 
+    long int target_x, 
+    long int target_y, 
+    ImageView input_view, 
+    ImageView output_view, 
+    long int a) 
 {
     using pixel_t = typename std::remove_reference<
                       decltype(std::declval<ImageView>()(0, 0))
@@ -84,18 +88,17 @@ void lanczos_at(
 /// https://en.wikipedia.org/wiki/Lanczos_resampling
 /// with standardinzed cardinal sin (sinc)
 template <typename ImageView>
-void scale_lanczos(
-    ImageView input_view, 
-    ImageView output_view, 
-    long int a) 
+void scale_lanczos(ImageView input_view, ImageView output_view, long int a) 
 {
     double scale_x = (static_cast<double>(output_view.width())) 
                      / static_cast<double>(input_view.width());
     double scale_y = (static_cast<double>(output_view.height())) 
                      / static_cast<double>(input_view.height());
 
-    for (long int y = 0; y < output_view.height(); ++y) {
-        for (long int x = 0; x < output_view.width(); ++x) {
+    for (long int y = 0; y < output_view.height(); ++y) 
+    {
+        for (long int x = 0; x < output_view.width(); ++x) 
+        {
             boost::gil::lanczos_at(static_cast<long int>(static_cast<double>(x)
                                     / scale_x), 
                                    static_cast<long int>(static_cast<double>(y)
