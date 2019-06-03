@@ -28,10 +28,12 @@ double normalized_sinc(double x)
 /// otherwise: normalized_sinc(x) / normalized_sinc(x / a)
 double lanczos(long int x, long int a) 
 {
-    if (x == 0) {
+    if (x == 0) 
+    {
         return 1;
     }
-    if (x > -a && x < a) {
+    if (x > -a && x < a) 
+    {
         return normalized_sinc(static_cast<double>(x)) 
                / normalized_sinc((static_cast<double>(x))
                                   / static_cast<double>(a));
