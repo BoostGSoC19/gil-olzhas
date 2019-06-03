@@ -56,10 +56,12 @@ void lanczos_at(
     
     for (long int y_i = std::max(source_y - a + 1, 0l); 
          y_i <= std::min(source_y + a, input_view.height() - 1); 
-         ++y_i) {
+         ++y_i) 
+        {
         for (long int x_i = std::max(source_x - a + 1, 0l); 
              x_i <= std::min(source_x + a, input_view.width() - 1); 
-             ++x_i) {
+             ++x_i) 
+        {
             double lanczos_response = boost::gil::lanczos(source_x - x_i, a) 
                                       * boost::gil::lanczos(source_y - y_i, a);
             auto op = [lanczos_response](channel_t prev, channel_t next) 
