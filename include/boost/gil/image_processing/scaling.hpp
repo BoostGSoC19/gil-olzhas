@@ -101,11 +101,14 @@ void scale_lanczos(ImageView input_view, ImageView output_view, long int a)
     {
         for (long int x = 0; x < output_view.width(); ++x) 
         {
-            boost::gil::lanczos_at(static_cast<long int>(static_cast<double>(x)
-                                    / scale_x), 
-                                   static_cast<long int>(static_cast<double>(y)
-                                    / scale_y), 
-                                   x, y, input_view, output_view, a);
+            boost::gil::lanczos_at(
+                x / scale_x, 
+                y / scale_y, 
+                x, 
+                y, 
+                input_view, 
+                output_view, 
+                a);
         }
     }
 }
