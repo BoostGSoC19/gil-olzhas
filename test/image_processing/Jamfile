@@ -1,0 +1,8 @@
+import testing ;
+
+project
+    : requirements
+    <include>..
+    ;
+
+run lanczos_scaling.cpp ;

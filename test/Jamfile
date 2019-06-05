@@ -117,3 +117,4 @@ rule generate_self_contained_headers ( headers_subpath * : exclude_subpaths * )
 build-project core ;
 build-project legacy ;
 build-project extension ;
+build-project image_processing ;
