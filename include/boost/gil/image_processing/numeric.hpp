@@ -25,7 +25,7 @@ double normalized_sinc(double x)
 ///
 /// Lanczos response is defined as:
 /// x == 0: 1
-/// x > -a && x < a: 0
+/// -a < x && x < a: 0
 /// otherwise: normalized_sinc(x) / normalized_sinc(x / a)
 double lanczos(double x, long int a) 
 {
@@ -33,7 +33,7 @@ double lanczos(double x, long int a)
     {
         return 1;
     }
-    if (x > -a && x < a) 
+    if (-a < x && x < a) 
     {
         return normalized_sinc(x) 
                / normalized_sinc(x / static_cast<double>(a));
