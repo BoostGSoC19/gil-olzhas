@@ -1,4 +1,4 @@
-#include <boost/math/constants/constants.hpp>
+#include <boost/gil/detail/math.hpp>
 #include <cmath>
 
 namespace boost{ namespace gil{
@@ -16,7 +16,7 @@ namespace boost{ namespace gil{
 /// normalized_sinc(x) = sin(pi * x) / (pi * x)
 double normalized_sinc(double x) 
 {
-    constexpr double pi = boost::math::constants::pi<double>();
+    constexpr double pi = boost::gil::pi;
     return std::sin(x * pi) / (x * pi);
 }
 
