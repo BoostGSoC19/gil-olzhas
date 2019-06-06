@@ -42,7 +42,6 @@ git submodule --quiet update --init $GIT_SUBMODULE_OPTS \
     libs/filesystem \
     libs/integer \
     libs/iterator \
-    libs/lexical_cast \
     libs/math \
     libs/mp11 \
     libs/mpl \
